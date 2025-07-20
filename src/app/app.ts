@@ -18,6 +18,7 @@ export class App implements OnInit {
 
   protected title = 'proyectocoder';
   students: Student[] = [];
+  activeSection = "students";
   constructor(private http: HttpClient) { }
   ngOnInit(): void {
     this.http.get<Student[]>('mocks/students.json').subscribe(data=>{
