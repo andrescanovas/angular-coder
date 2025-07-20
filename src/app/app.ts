@@ -6,10 +6,11 @@ import { HttpClient } from '@angular/common/http';
 import { Student } from '../shared/entities';
 import { CommonModule } from '@angular/common';
 import { StudentTable } from "./student-table/student-table";
+import { AddForm } from "./add-form/add-form";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Toolbar, Navbar, CommonModule, StudentTable],
+  imports: [RouterOutlet, Toolbar, Navbar, CommonModule, StudentTable, AddForm],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
@@ -23,4 +24,7 @@ export class App implements OnInit {
       this.students = data;
     
   })}
+
+  addStudent(student: Student) {
+    this.students = [...this.students, student];}
 }
