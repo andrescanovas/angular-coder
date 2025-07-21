@@ -1,4 +1,5 @@
-<div class="container">
+
+  <div class="container">
 
   <app-toolbar class="toolbar"></app-toolbar>
   <app-navbar (activeSection)="activeSection =$event" class="navbar"></app-navbar>
@@ -14,6 +15,12 @@
       <app-add-form (studentAdded)="addStudent($event)"></app-add-form>
     </ng-container>
   
+     <ng-container *ngIf="activeSection === 'delete'">
+
+        <app-delete-form (studentDeleted)="deleteStudent($event)"></app-delete-form>
+
+    </ng-container>
 
   
 </div>
+

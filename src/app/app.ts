@@ -7,10 +7,11 @@ import { Student } from '../shared/entities';
 import { CommonModule } from '@angular/common';
 import { StudentTable } from "./student-table/student-table";
 import { AddForm } from "./add-form/add-form";
+import { DeleteForm } from './delete-form/delete-form';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Toolbar, Navbar, CommonModule, StudentTable, AddForm],
+  imports: [RouterOutlet, Toolbar, Navbar, CommonModule, StudentTable, AddForm, DeleteForm],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
@@ -24,8 +25,14 @@ export class App implements OnInit {
     this.http.get<Student[]>('mocks/students.json').subscribe(data=>{
       this.students = data;
     
-  })}
+  });}
 
   addStudent(student: Student) {
     this.students = [...this.students, student];}
+
+     deleteStudent(dni: string) {
+     
+     const studentsList = this.students.filter(student => student.dni.toString() !== dni);
+    this.students = [...studentsList];  
+  }
 }
